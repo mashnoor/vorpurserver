@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 
             $table->text('name');
+            $table->text('price');
             $table->text('catagory');
             $table->text('subcatagory');
             $table->text('brand_id');

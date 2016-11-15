@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function() {
-	return "Hello";
+	return "Hello Mash";
 });
 
 Route::get('/api/product/{id}', 'ProductController@getProduct');
