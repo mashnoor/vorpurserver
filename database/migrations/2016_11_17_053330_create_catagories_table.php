@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class CreateCatagoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,18 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('catagories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
-            $table->integer('user_id');
-            $table->softDeletes();
+            $table->text('name');
+            $table->text('logo_url');
             $table->timestamps();
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
-        Schema::drop('likes');
+        Schema::drop('catagories');
     }
 }

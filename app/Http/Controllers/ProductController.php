@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,6 +33,39 @@ class ProductController extends Controller
         $response->header("Content-Type", $type);
 
         return $response;
+    }
+
+    public function isLiked($productid, $userid)
+    {
+        $product = Product::findOrFail($productid)->first();
+
+
+        if (Like::whereUserId($userid)->whereProductId($productid)->exists()){
+            return 'true';
+        }
+        return 'false';
+    }
+
+    public function like($productid, $userid)
+    {
+        echo $userid;
+        $existing_like = Like::whereProductId($productid)->whereUserId($userid)->first();
+
+        if (is_null($existing_like)) {
+           $l = new Like();
+            $l->user_id = $userid;
+            $l->product_id = $productid;
+            $l->save();
+
+
+
+        } else {
+            if (is_null($existing_like->deleted_at)) {
+                $existing_like->delete();
+            } else {
+                $existing_like->restore();
+            }
+        }
     }
 
 }
