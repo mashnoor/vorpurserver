@@ -25,8 +25,12 @@ Route::get('/api/product/image/{id}', 'ProductController@getProductImage');
 
 Route::get('/api/brands/', 'BrandController@getAllBrands');
 
-Route::get('/api/brand/image/{name}', 'BrandController@getBrandImage');
+Route::get('/api/brand/image/{name}', 'ImageController@getBrandImage');
 
 Route::get('api/product/{productid}/islikedby/{userid}', 'ProductController@isLiked');
 
 Route::get('api/product/{productid}/like/{userid}', 'ProductController@like');
+
+Route::get('/api/catagories/', 'CatagoryController@getAllCatagory');
+
+Route::get('/api/catagory/image/{name}', 'ImageController@getCatagoryImage');
