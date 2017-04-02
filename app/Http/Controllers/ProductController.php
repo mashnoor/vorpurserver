@@ -20,9 +20,9 @@ class ProductController extends Controller
         return stripcslashes($product);
 
     }
-    public function getProductImage($id)
+    public function getProductImage($filename)
     {
-        $path = storage_path() . '/' . "prod_" . $id . ".jpg";
+        $path = storage_path() . '/product_image/' . $filename;
 
         if(!File::exists($path)) abort(404);
 
@@ -68,4 +68,12 @@ class ProductController extends Controller
         }
     }
 
+    public function get_latest_three()
+    {
+        $latest_products = Product::orderBy('created_at', 'desc')
+                              ->take(3)->get();
+
+
+        return $latest_products;
+    }
 }

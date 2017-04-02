@@ -21,7 +21,7 @@ Route::get('/test', function() {
 
 Route::get('/api/product/{id}', 'ProductController@getProduct');
 
-Route::get('/api/product/image/{id}', 'ProductController@getProductImage');
+Route::get('/api/product/image/{filename}', 'ProductController@getProductImage');
 
 Route::get('/api/brands/', 'BrandController@getAllBrands');
 
@@ -34,3 +34,6 @@ Route::get('api/product/{productid}/like/{userid}', 'ProductController@like');
 Route::get('/api/catagories/', 'CatagoryController@getAllCatagory');
 
 Route::get('/api/catagory/image/{name}', 'ImageController@getCatagoryImage');
+
+//Product Routes
+Route::get('/api/products/getlatestthreeproducts', 'ProductController@get_latest_three');
